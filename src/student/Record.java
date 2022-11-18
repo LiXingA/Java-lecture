@@ -3,8 +3,6 @@ package student;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.Icon;
-
 public class Record {
 	private final Types types;
 	private final String path;
@@ -17,6 +15,7 @@ public class Record {
 	private int wChatTimes = 0;
 	private boolean first;
 	private final long createTime;
+	private int grade;
 
 	public Record(Types types, String path, String name, long l) {
 		super();
@@ -55,7 +54,7 @@ public class Record {
 	}
 
 	protected static final Object FIRST = "首选";
-	static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd");
+	static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	static final String TYPE = "文件类型";
 	static final String NAME = "学生名字";
 
@@ -68,6 +67,8 @@ public class Record {
 			"网课签到", "网课活跃度",
 
 			FIRST, "综合评分",
+
+			"评级",
 
 			"创建时间" };
 
@@ -82,16 +83,18 @@ public class Record {
 
 				this.first, this.getScore(),
 
+				this.grade,
+
 				simpleDateFormat.format(new Date(this.createTime)) };
 	}
 
 	@Override
 	public String toString() {
 		if (this.first) {
-			return String.format("%s=>上交作业次数：%s ,网课签到次数： %s ,网课活跃度： %s ,综合评分：%s", this.name, this.times, this.wChecks,
-					this.wChatTimes, this.getScore());
+			return String.format("%s=>上交作业次数：%s ,网课签到次数： %s ,网课活跃度： %s ,综合评分：%s ,评级：%s", this.name, this.times,
+					this.wChecks, this.wChatTimes, this.getScore(), this.grade);
 		} else {
-			return super.toString();
+			return String.format("路径：%s，评级：%s", this.path, this.grade);
 		}
 	}
 

@@ -52,7 +52,7 @@ public class CheckZuoyeUtil {
 			}
 		};
 		Tools.scanDirRecursion(new File(zuoyePath), handler);
-		Map<String, WkRecord> wkMapByName = WkCalc.calcWk(clazzConfig.getWkPath(), names);
+		Map<String, WkRecord> wkMapByName = WkCalc.calcWk(clazzConfig.getWkPath(), names, clazzConfig.getErrNameReg());
 		ArrayList<Object[]> arrayList = new ArrayList<>();
 		int maxCheckTimes = 0;
 		int maxChatTimes = 0;
@@ -160,8 +160,9 @@ public class CheckZuoyeUtil {
 			String lecture = row.getCell(1) != null ? row.getCell(1).getStringCellValue() : "";
 			String zuoyePath = row.getCell(2) != null ? row.getCell(2).getStringCellValue() : "";
 			String wkPath = row.getCell(3) != null ? row.getCell(3).getStringCellValue() : "";
+			String errNameReg = row.getCell(4) != null ? row.getCell(4).getStringCellValue() : null;
 			if (!StringUtils.isBlank(name) && !StringUtils.isBlank(lecture) && !names.isEmpty()) {
-				list.add(new ClazzConfig(name, lecture, zuoyePath, wkPath, names));
+				list.add(new ClazzConfig(name, lecture, zuoyePath, wkPath, names, errNameReg));
 			}
 		}
 		return list.toArray(new ClazzConfig[list.size()]);

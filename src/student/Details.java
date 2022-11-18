@@ -63,8 +63,9 @@ public class Details {
 		}
 		List<Record> rList = zyMap.get(name);
 		for (Record record : rList) {
-			if (record.isFirst())
+			if (record.isFirst()) {
 				System.err.println(record.toString());
+			}
 		}
 	}
 
