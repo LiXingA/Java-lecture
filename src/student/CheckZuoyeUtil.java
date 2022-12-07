@@ -165,6 +165,7 @@ public class CheckZuoyeUtil {
 				list.add(new ClazzConfig(name, lecture, zuoyePath, wkPath, names, errNameReg));
 			}
 		}
+		wookbook.close();
 		return list.toArray(new ClazzConfig[list.size()]);
 	}
 }

@@ -1,0 +1,777 @@
+【单选题】下面哪个名称不属于Java版本。（    ）
+A．JavaSE
+B．JavaEE
+C．JavaME
+D．JavaScript
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？
+    public class Test {
+    		public static void main() {
+    			System.out.println("Hello World!");
+    		}
+    }
+    选择一个正确的答案：（   ）
+A．不能正常编译，因为main()方法定义错误
+B．可以正常编译，但不能正常运行，因为找不到main()方法
+C．可以正常编译和运行，但是在控制台上没有输出
+D．可以正常编译和运行，在控制台上显示“Hello World!”
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java源代码的扩展名是：（   ）
+A．.txt
+B．.exe
+C．.bat
+D．.java
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java的编译命令是：（  ）
+A．java
+B．javac
+C．javaw
+D．javaws
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】JDK是Java的（  ）环境
+A．运行环境
+B．开发环境
+C．安装文件
+D．开发工具
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java在设计之初的名字是（  ）
+A．Java
+B．JavaSE
+C．JavaEE
+D．OAK
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Oracle公司在（  ）年收购了SUN公司
+A．2010
+B．2009
+C．2008
+D．2007
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java属于是哪个公司的产品。（    ）
+A．IBM
+B．ORACLE
+C．Microsoft
+D．SAP
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Eclipse界面中哪个视图用于显示程序运行时输出的调试信息和（Runtime Exception）运行时异常信息。（    ）
+A．包资源管理器
+B．控制台视图
+C．大纲视图
+D．问题视图
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下面网址中，中哪个是Eclipse的官方网址。（    ）。
+A．http://www.eclipse.org
+B．http://www.eclipse.com
+C．http://www.eclipse.net
+D．http://www.eclipse.cn
+答案：A
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】输入文字使用哪个控件（    ）。
+A．Jlabel
+B．JTextField
+C．Jbutton
+D．Jedit
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Eclipse是由哪个公司开发的。（    ）。
+A．Sun
+B．IBM
+C．微软
+D．谷歌
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】在Eclipse工作台中使用资源时，各种构建器可以将问题、错误或警告自动记录并显示在哪一个视图中。（    ）。
+A．包资源管理器视图
+B．问题视图
+C．控制台视图
+D．大纲视图
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Eclipse的代码辅助功能非常强大，在Java编辑器中应该使用什么快捷键激活代码辅助菜单。（    ）。
+A．〈Shift+/〉
+B．〈Ctrl+\〉
+C．〈Alt+\〉
+D．〈Alt+/〉
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列标识符中，哪些（个）是非法的？（  ）
+A．here
+B．_there
+C．this
+D．that
+答案：C
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列转义字符中，哪些（个）是非法的？（  ）
+A．\n 换行
+B．\r 制表符
+C．\’ 单引号
+D．\q
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列整数表达式中，哪些（个）是非法的？
+A．030    八进制以0开头
+B．24
+C．0X18   十六进制以0X开头
+D．ABC
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+    	public static void main(String[] args) {
+    		byte bitNum = 888;    //byte的取值范围是-128~127
+    		System.out.println("num=" + bitNum);
+    	}
+    }
+A．编译错误
+B．运行错误
+C．输出888
+D．输出125
+答案：A
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】分析下列代码，程序会输出什么结果？
+    public class Test {
+    	int num = 45;//成员变量，属于Test对象的
+        Test(){
+            this.num = 888;
+        }
+    	public static void main(String[] args) {
+    		int num = 88;
+    		System.out.println("num=" + num);
+    	}
+    }
+A．45
+B．88
+C．num=45
+D．num=88
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】多行注释的语法格式？
+A．// 注释内容
+B．/*注释内容*/
+C．/**注释内容*/
+D．其他答案
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java语言是否有goto关键字，它的作用是？
+A．没有
+B．有，可以跳转到指定代码行
+C．有，但只作为保留关键字，没有任何功能实现
+D．其他答案
+答案：C
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列不符合局部变量定义位置的有？
+A．方法体中定义
+B．循环体中定义
+C．条件分支中定义
+D．类体中定义
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java中的成员变量的有效范围是？
+A．整个类体
+B．整个方法体
+C．一个条件分支
+D．循环体的每次循环
+答案：A
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列数据类型中不属于基本类型的是？
+A．int
+B．long
+C．boolean
+D．String
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            char myChar = 'c';
+            switch (myChar) {
+                default:
+                case 'a':
+                    System.out.println("a");
+                    break;
+            }
+        }
+    }
+A．switch块非法，因为只能使用int类型作为参数
+B．switch块合法
+C．switch块非法，因为default必须放在块的结尾处
+D．运行程序后，控制台无输出
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会输出什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int I = 5;
+            do {
+                System.out.println(I);
+            } while (--I > 5);
+        }
+    }
+A．6
+B．5
+C．4
+D．9
+答案：B
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码后输出的结果是Second，则x的范围是？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int x = (       );
+            if (x > 0)
+                System.out.println("First");
+            else if (x > -3)
+                System.out.println("Second");
+            else
+                System.out.println("Third");
+        }
+    }
+A．x > 0
+B．x <= 0
+C．x < -3
+D．x <=0 且 x > -3
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            boolean flag = false;
+            if (flag = true) {
+                System.out.println("true");
+            } else {
+                System.out.println("false");
+            }
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出true
+D．输出false
+答案：C
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int total = 0;
+            for (int i = 0; i > total; i++) {
+                System.out.println(i);
+            }
+            System.out.println(total);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出0
+D．输出total
+答案：C
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int i = 1;
+            switch (i) {
+                case 1:
+                    i += 1;
+                case 2:
+                    i = 10;
+                default:
+                    i = 0;
+            }
+            System.out.println("i=" + i);
+        }
+    }
+A．输出i=2
+B．运行错误
+C．输出i=10
+D．输出i=0
+答案：D
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】switch多分支语句括号中能够接受下列哪些类型的条件表达式？（  ）
+A．Integer
+B．long
+C．char
+D．float
+答案：C
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int j = 1;
+            switch (j) {
+                case 1:
+                    j++;
+                case 2:
+                    j++;
+                case 3:
+                    j++;
+                case 4:
+                    j++;
+                case 5:
+                    j++;
+                default:
+                    j++;
+            }
+            System.out.println("j=" + j);
+        }
+    }
+A．编译错误
+B．输出j=7
+C．输出j=2
+D．输出j=6
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int i = 0;
+            for (; i < 9; i += 3) {
+                System.out.print(i + "  ");
+            }
+            // System.out.println(i);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出0 3 6 9
+D．输出0 3 6
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int i = 1, j = 10;
+            do {
+                if (i++ > --j)
+                    break;
+            } while (i < 5);
+            System.out.println("i=" + i + "\tj=" + j);
+        }
+    }
+A．i = 6		j = 5
+B．i = 5		j = 5
+C．i = 6		j = 4
+D．i = 5		j = 6
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（   ）
+    public class Test {
+        public static void main(String[] args) {
+             char[] array = {'a',,'b'};
+            System.out.println(array[0]);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出a
+D．其他答案
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（   ）
+    public class Test {
+        public static void main(String[] args) {
+            long size = 10;
+            int[] array = new int[size];
+            size = 20;
+            System.out.println(array.length);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出10
+D．输出20
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列定义二维数组的语句，哪些是错误的？（   ）
+A．double[][] array = new double[6][6];
+B．double array[][] = new double[6][6];
+C．double[][] array = new double[][6];
+D．double[][] array = new double[6][];
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（   ）
+    public class Test {
+        public static void main(String[] args) {
+            int[] array = new int[5];
+            System.out.println(array[5]);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出0
+D．输出null
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            int[] array = new int[10];
+            array.length = 15;
+            System.out.println(array.length);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出10
+D．输出15
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】正确定义一维数组的方式包括？（   ）
+A．int array
+B．int[3] array
+C．{1,2}
+D．int array[3]
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列代码中定义的三维数组中，每个维数对应数组的长度是？（   ）
+    int array[][][] = {
+    	{ { 1, 2, 3 }, { 4, 5, 6 } },
+    	{ { 7, 8, 9 }, { 10, 11, 12 } },
+    	{ { 13, 14, 15 }, { 16, 17, 18 } }
+    };
+A．array[6][3][6]
+B．array[3][2][3]
+C．array[3][3][6]
+D．array[3][6][3]
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java提供了Arrays类来完成各种常用的数组操作，它位于Java的哪个包？（   ）
+A．java.arrays
+B．java.System
+C．java.lang
+D．java.util
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】对数组排序最简单的代码是？（   ）
+A．调用Arrays类的sort()方法
+B．使用冒泡排序算法
+C．使用直接选择排序算法
+D．其他答案
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列代码的输出结果是？（   ）
+    public class Test {
+        public static void main(String[] args) {
+            int size=10;
+            int[] array=new int[size];
+            size=25;
+            System.out.println(array.length);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出10
+D．输出20
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】Java的源代码文件可以分成3部分：包声明、导入声明和类定义。虽然它们不一定是必须的，但是如果这几部分同时存在则需要遵守一定的顺序。请选择你认为正确的选项？（  ）
+A．包声明、导入声明和类定义
+B．包声明、类定义和导入声明
+C．导入声明、包声明和类定义
+D．导入声明、类定义和包声明
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    package com.lzw;
+    private class First{
+    	private int age;
+    	public static void main(String[] args) {}
+    }
+A．编译错误：不能使用private修饰成员变量
+B．编译错误：成员变量未初始化
+C．编译错误：main()方法的签名不对
+D．编译错误：不能使用private修饰外部类
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行同一文件夹下的如下两个类时会发生什么？（  ）
+    //文件名：P1.java
+    package com.lzw;
+    public class P1 {
+        public void say() {
+            System.out.println("Hello World!");
+        }
+    }
+    //文件名：P2.java
+    public class P2 {
+        public void say() {
+            P1 p1 = new P1();
+            p1.say();
+        }
+    }
+A．两个文件都能正常编译，第二个文件也输出Hello World！
+B．两个文件都不能正常编译
+C．两个文件都能正常编译，但第二个文件在运行时发生错误
+D．第一个文件能正常编译，第二个文件不能正常编译
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        public static void main(String[] args) {
+            String x = new String("12");
+            String y = new String("12");
+            if (x.equals(y))
+                System.out.println("Equal");
+            else
+                System.out.println("Not Equal");
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出Equal
+D．输出Not Equal
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】当编译和运行下列代码时会发生什么？（  ）
+    public class Test {
+        private String name = "MRSoft";
+        public static void main(String[] args) {
+            System.out.println(name);
+        }
+    }
+A．编译错误
+B．运行错误
+C．输出MRSoft
+D．输出null
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】包名是类名的一部分，它们组合在一起就是这个类的完整名称，如果在一个类中同时需要使用两个同名的类名，那么应该如何引用它们。（  ）
+A．使用类的完整名称（包名+类名）
+B．直接使用类名（编译器会区分）
+C．使用import导入这两个类
+D．使用package把当前类定义到其它包中
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】导入java.util包中的所有类，应该使用？（  ）
+A．package java.util
+B．package java.util.*
+C．import java.util
+D．import java.util.*
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】下列代码使用System类的out静态成员变量完成输出，应该为该类添加哪一个代码，才能使代码正确执行输出语句？（  ）
+            out.println("静态导入System类的out静态成员变量"); // 直接使用静态成员
+            out.println("可以在当前类直接使用导入的静态成员变量");
+A．import System
+B．import java.long.*
+C．import static java.lang.System.out
+D．import static System.out
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】导入java.util包中的所有类，应该使用？（  ）
+A．package java.util
+B．package java.util.*
+C．import java.util
+D．import java.util.*
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【单选题】使用下面哪个关键字定义类的包？（  ）
+A．import
+B．package
+C．class
+D．static
+答案：未知
+难易程度：中
+答案解析：无
+知识点：
+
+【判断题】JavaSE、JavaEE和JavaME分别是独立的版本，它们没有任何依赖条件。（）
+答案：未知
+
+【判断题】JavaEE和JavaME是分别独立的，它们之间没有依赖关系。（）
+答案：未知
+
+【判断题】Java实现Web程序开发与桌面应用程序开发的技术都包含在JavaEE中。（）
+答案：未知
+
+【判断题】Java源码文件可以使用任何文本编辑器进行编写，然后通过JDK的编译命令完成Java程序的开发。（）
+答案：未知
+
+【判断题】Java语言执行源文件编译时使用的是javac.exe命令，输入命令时可省略后缀的文件扩展名（）
+答案：未知
+
+【判断题】在设置环境变量时，要注意避免破坏path环境变量的原有值，不能删除原有内容，应该在原有内容的基础上添加新内容，并以“；”符号分割多个值。（）
+答案：未知
+
+【判断题】Eclipse的工作空间是首次启动时就固定的，必须在这个指定的空间中创建并完成Java项目的开发（）
+答案：未知
+
+【判断题】WindowBuilder与Eclipse一样，是一个完全独立的开发工具，它主要用于窗体界面的设计工作。（）
+答案：未知
+
+【判断题】System.out.println()方法在Java编辑器中可以通过输入“syso”和按〈Alt+/〉快捷键完成快速录入。（）
+答案：未知
+
+【判断题】将光标移动到Java编辑器的错误代码位置，按〈Ctrl+L〉快捷可以激活代码修正菜单，可以选择菜单中合适的修正方法。（）
+答案：未知
+
+【判断题】在调试视图中执行“单步跳过”命令的快捷键是〈F6〉键。（）
+答案：未知
+
+【判断题】使用Eclipse的调试功能进行程序调试时必须设置断点，才能够以调试方式运行程序。（）
+答案：未知
+

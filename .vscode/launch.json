@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ExtractTiku",
+            "request": "launch",
+            "mainClass": "exam.ExtractTiku",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
+            "name": "Launch ExtractWangluoTiku",
+            "request": "launch",
+            "mainClass": "exam.ExtractWangluoTiku",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "student.excel.Test",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
+            "name": "Launch ExtractJavaTiku",
+            "request": "launch",
+            "mainClass": "exam.ExtractJavaTiku",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
+            "name": "Launch Jingyesi",
+            "request": "launch",
+            "mainClass": "exam.Jingyesi",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
             "name": "Launch WkCalc",
             "request": "launch",
             "mainClass": "student.excel.WkCalc",
