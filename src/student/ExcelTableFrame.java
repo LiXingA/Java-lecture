@@ -102,11 +102,31 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	public static JSlider createSlider(int min, int max, int value) {
+		JSlider zyJs = new JSlider(min, max, value);
+		zyJs.setPaintLabels(true);
+		zyJs.setPaintTicks(true);
+		zyJs.setMajorTickSpacing((int) Math.ceil((max - min) / 5.0));
+		zyJs.setMinorTickSpacing((int) Math.ceil((max - min) / 25.0));
+		return zyJs;
+	}
+
 	public JPanel getTop() {
 		JPanel jpTop = new JPanel();
-		JSlider zyJs = new JSlider(0, 100, ConfigData.ZY_RATE);
-		JSlider checkJs = new JSlider(0, 100, ConfigData.CHECK_RATE);
-		JSlider cJs = new JSlider(0, 5, ConfigData.CHAT_RATE);
+		JSlider baseJs = createSlider(0, 100, ConfigData.BASE_RATE);
+		JSlider zyJs = createSlider(0, 100, ConfigData.ZY_RATE);
+		JSlider checkJs = createSlider(0, 100, ConfigData.CHECK_RATE);
+		JSlider cJs = createSlider(0, 5, ConfigData.CHAT_RATE);
+		baseJs.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				JSlider source = (JSlider) e.getSource();
+				if (!source.getValueIsAdjusting()) {
+					int fps = (int) source.getValue();
+					ConfigData.BASE_RATE = fps;
+				}
+			}
+		});
 		zyJs.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -225,6 +245,8 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 			}
 		});
 		jpTop.setLayout(new FlowLayout());
+		jpTop.add(new JLabel("基本值"));
+		jpTop.add(baseJs);
 		jpTop.add(new JLabel("作业权重"));
 		jpTop.add(zyJs);
 		jpTop.add(new JLabel("网签权重"));

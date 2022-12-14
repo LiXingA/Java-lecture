@@ -1,6 +1,7 @@
 package student;
 
 public class ConfigData {
+	public static int BASE_RATE = 40;
 	public static int ZY_RATE = 25;
 	public static int CHECK_RATE = 6;
 	public static int CHAT_RATE = 1;

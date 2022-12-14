@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import student.HandleFileI.Tools;
+import student.excel.ChatInfo;
 import student.excel.WkCalc;
 import student.excel.WkRecord;
 
@@ -61,8 +63,8 @@ public class CheckZuoyeUtil {
 			String name = entry.getKey();
 			List<Record> recordList = entry.getValue();
 			WkRecord wkRecord = wkMapByName.get(name);
-			int chatTimes = wkRecord != null ? wkRecord.getChats().size() : 0;
-			int checkTimes = wkRecord != null ? wkMapByName.get(name).getChecks().size() : 0;
+			List<ChatInfo> chats = wkRecord != null ? wkRecord.getChats() : new ArrayList<ChatInfo>();
+			List<Date> checks = wkRecord != null ? wkMapByName.get(name).getChecks() : new ArrayList<Date>();
 			Set<String> set = new HashSet<>();
 			StringBuilder builder = new StringBuilder();
 			if (!recordList.isEmpty()) {
@@ -84,8 +86,8 @@ public class CheckZuoyeUtil {
 			firstRecord.setFirst(true);
 			firstRecord.setTimes(set.size());
 			firstRecord.setRepeatTimes(builder.toString());
-			firstRecord.setwChatTimes(chatTimes);
-			firstRecord.setwChecks(checkTimes);
+			firstRecord.setWangChats(chats);
+			firstRecord.setWangChecks(checks);
 			if (firstRecord.getTimes() > maxZyTimes) {
 				maxZyTimes = firstRecord.getTimes();
 			}

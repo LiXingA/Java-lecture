@@ -45,6 +45,16 @@ public class ExtractWangluoTiku {
                                 }
                                 daan = daan.substring(0, 1);
                                 list.add(new TiMu("" + list.size(), daan, ti, a, b, c, d));
+                            } else if (next.trim().equals("正确")) {
+                                bufferedReader.readLine();
+                                bufferedReader.readLine();
+                                bufferedReader.readLine();
+                                bufferedReader.readLine();
+                                String daan = bufferedReader.readLine().trim();
+                                if (!daan.equals("正确") && !daan.equals("错误")) {
+                                    break;
+                                }
+                                pdlist.add(new PanDuanTiMu("" + pdlist.size(), daan.equals("正确") ? "对" : "错", ti));
                             } else {
                                 break;
                             }
@@ -62,16 +72,16 @@ public class ExtractWangluoTiku {
         };
 
         HandleFileI.Tools.scanDirRecursion(new File("./resource/wangluo"), handler);
-        File outFile = new File("./wangluoTiku.txt");
+        File outFile = new File("./wangluoTiku2.txt");
         if (!outFile.exists()) {
             outFile.createNewFile();
         }
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outFile));
         for (TiMu tiMu : list) {
-            bufferedWriter.append(tiMu.tranlate()).append("\n");
+            bufferedWriter.append(tiMu.tranlate(false, false)).append("\n");
         }
         for (PanDuanTiMu tiMu : pdlist) {
-            bufferedWriter.append(tiMu.tranlate()).append("\n");
+            bufferedWriter.append(tiMu.tranlate(false, false)).append("\n");
         }
         bufferedWriter.close();
     }

@@ -1,7 +1,12 @@
 package student;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+
+import student.excel.ChatInfo;
 
 public class Record {
 	private final Types types;
@@ -11,11 +16,11 @@ public class Record {
 
 	private String weekIndex = "";
 	private String repeatTimes = "";
-	private int wChecks = 0;
-	private int wChatTimes = 0;
 	private boolean first;
 	private final long createTime;
 	private int grade;
+	private List<Date> wangChecks = Collections.EMPTY_LIST;
+	private List<ChatInfo> wangChats = Collections.EMPTY_LIST;
 
 	public Record(Types types, String path, String name, long l) {
 		super();
@@ -46,11 +51,11 @@ public class Record {
 	}
 
 	public int getwChecks() {
-		return wChecks;
+		return wangChecks.size();
 	}
 
 	public int getwChatTimes() {
-		return wChatTimes;
+		return wangChats.size();
 	}
 
 	protected static final Object FIRST = "首选";
@@ -79,7 +84,7 @@ public class Record {
 
 				this.weekIndex, this.repeatTimes,
 
-				this.wChecks, this.wChatTimes,
+				this.wangChecks.size(), this.wangChats.size(),
 
 				this.first, this.getScore(),
 
@@ -92,18 +97,20 @@ public class Record {
 	public String toString() {
 		if (this.first) {
 			return String.format("%s=>上交作业次数：%s ,网课签到次数： %s ,网课活跃度： %s ,综合评分：%s ,评级：%s", this.name, this.times,
-					this.wChecks, this.wChatTimes, this.getScore(), this.grade);
+					this.wangChecks.size(), this.wangChats.size(), this.getScore(), this.grade);
 		} else {
 			return String.format("路径：%s，评级：%s", this.path, this.grade);
 		}
 	}
 
 	private long getScore() {
-		return Math.round((this.times * ConfigData.ZY_RATE + this.wChecks * ConfigData.CHECK_RATE
-				+ this.wChatTimes * ConfigData.CHAT_RATE) * 100.0 /
+		return (ConfigData.BASE_RATE
+				+ Math.round((this.times * ConfigData.ZY_RATE + this.wangChecks.size() * ConfigData.CHECK_RATE
+						+ this.wangChats.size() * ConfigData.CHAT_RATE) * (100.0 - ConfigData.BASE_RATE) /
 
-				(ConfigData.MAX_ZY_TIMES * ConfigData.ZY_RATE + ConfigData.MAX_CHECK_TIMES * ConfigData.CHECK_RATE
-						+ ConfigData.MAX_CHAT_TIMES * ConfigData.CHAT_RATE));
+						(ConfigData.MAX_ZY_TIMES * ConfigData.ZY_RATE
+								+ ConfigData.MAX_CHECK_TIMES * ConfigData.CHECK_RATE
+								+ ConfigData.MAX_CHAT_TIMES * ConfigData.CHAT_RATE)));
 	}
 
 	public String getWeekIndex() {
@@ -118,20 +125,20 @@ public class Record {
 		this.repeatTimes = repeatTimes;
 	}
 
-	public void setwChecks(int wChecks) {
-		this.wChecks = wChecks;
-	}
-
-	public void setwChatTimes(int wChatTimes) {
-		this.wChatTimes = wChatTimes;
-	}
-
 	public void setFirst(boolean b) {
 		this.first = b;
 	}
 
 	public boolean isFirst() {
 		return first;
+	}
+
+	public void setWangChats(List<ChatInfo> chats) {
+		this.wangChats = chats;
+	}
+
+	public void setWangChecks(List<Date> checks) {
+		this.wangChecks = checks;
 	}
 
 }

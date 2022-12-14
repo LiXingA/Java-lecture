@@ -442,336 +442,336 @@ D．输出0 3 6
 答案解析：无
 知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（  ）
-    public class Test {
-        public static void main(String[] args) {
-            int i = 1, j = 10;
-            do {
-                if (i++ > --j)
-                    break;
-            } while (i < 5);
-            System.out.println("i=" + i + "\tj=" + j);
-        }
-    }
-A．i = 6		j = 5
-B．i = 5		j = 5
-C．i = 6		j = 4
-D．i = 5		j = 6
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                                【单选题】当编译和运行下列代码时会发生什么？（  ）
+                                    public class Test {
+                                        public static void main(String[] args) {
+                                            int i = 1, j = 10;
+                                            do {
+                                                if (i++ > --j)     1>9    2>8  3>7  4>6
+                                                    break;
+                                            } while (i < 5);       2<5    3<5  4<5  5<5
+                                            System.out.println("i=" + i + "\tj=" + j);
+                                        }
+                                    }
+                                A．i = 6		j = 5
+                                B．i = 5		j = 5
+                                C．i = 6		j = 4
+                                D．i = 5		j = 6
+                                答案：D
+                                难易程度：中
+                                答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（   ）
-    public class Test {
-        public static void main(String[] args) {
-             char[] array = {'a',,'b'};
-            System.out.println(array[0]);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出a
-D．其他答案
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（   ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        char[] array = {'a',,'b'};
+                                        System.out.println(array[0]);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出a
+                            D．其他答案
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（   ）
-    public class Test {
-        public static void main(String[] args) {
-            long size = 10;
-            int[] array = new int[size];
-            size = 20;
-            System.out.println(array.length);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出10
-D．输出20
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（   ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        long size = 10;
+                                        int[] array = new int[size];
+                                        size = 20;
+                                        System.out.println(array.length);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出10
+                            D．输出20
+                            答案：A
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】下列定义二维数组的语句，哪些是错误的？（   ）
-A．double[][] array = new double[6][6];
-B．double array[][] = new double[6][6];
-C．double[][] array = new double[][6];
-D．double[][] array = new double[6][];
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】下列定义二维数组的语句，哪些是错误的？（   ）
+                            A．double[][] array = new double[6][6];
+                            B．double array[][] = new double[6][6];
+                            C．double[][] array = new double[][6];
+                            D．double[][] array = new double[6][];
+                            答案：C
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（   ）
-    public class Test {
-        public static void main(String[] args) {
-            int[] array = new int[5];
-            System.out.println(array[5]);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出0
-D．输出null
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（   ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        int[] array = new int[5];
+                                        System.out.println(array[5]);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出0
+                            D．输出null
+                            答案：B
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（  ）
-    public class Test {
-        public static void main(String[] args) {
-            int[] array = new int[10];
-            array.length = 15;
-            System.out.println(array.length);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出10
-D．输出15
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（  ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        int[] array = new int[10];
+                                        array.length = 15;//常量
+                                        System.out.println(array.length);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出10
+                            D．输出15
+                            答案：A
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】正确定义一维数组的方式包括？（   ）
-A．int array
-B．int[3] array
-C．{1,2}
-D．int array[3]
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】正确定义一维数组的方式包括？（   ）
+                            A．int array
+                            B．int[3] array
+                            C．{1,2}
+                            D．int array[3]
+                            答案：C
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】下列代码中定义的三维数组中，每个维数对应数组的长度是？（   ）
-    int array[][][] = {
-    	{ { 1, 2, 3 }, { 4, 5, 6 } },
-    	{ { 7, 8, 9 }, { 10, 11, 12 } },
-    	{ { 13, 14, 15 }, { 16, 17, 18 } }
-    };
-A．array[6][3][6]
-B．array[3][2][3]
-C．array[3][3][6]
-D．array[3][6][3]
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】下列代码中定义的三维数组中，每个维数对应数组的长度是？（   ）
+                                int array[][][] = {
+                                    { { 1, 2, 3 }, { 4, 5, 6 } },
+                                    { { 7, 8, 9 }, { 10, 11, 12 } },
+                                    { { 13, 14, 15 }, { 16, 17, 18 } }
+                                };
+                            A．array[6][3][6]
+                            B．array[3][2][3]
+                            C．array[3][3][6]
+                            D．array[3][6][3]
+                            答案：B
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】Java提供了Arrays类来完成各种常用的数组操作，它位于Java的哪个包？（   ）
-A．java.arrays
-B．java.System
-C．java.lang
-D．java.util
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】Java提供了Arrays类来完成各种常用的数组操作，它位于Java的哪个包？（   ）
+                            A．java.arrays
+                            B．java.System
+                            C．java.lang
+                            D．java.util
+                            答案：D
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】对数组排序最简单的代码是？（   ）
-A．调用Arrays类的sort()方法
-B．使用冒泡排序算法
-C．使用直接选择排序算法
-D．其他答案
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】对数组排序最简单的代码是？（   ）
+                            A．调用Arrays类的sort()方法
+                            B．使用冒泡排序算法
+                            C．使用直接选择排序算法
+                            D．其他答案
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】下列代码的输出结果是？（   ）
-    public class Test {
-        public static void main(String[] args) {
-            int size=10;
-            int[] array=new int[size];
-            size=25;
-            System.out.println(array.length);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出10
-D．输出20
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】下列代码的输出结果是？（   ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        int size=10;
+                                        int[] array=new int[size];
+                                        size=25;
+                                        System.out.println(array.length);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出10
+                            D．输出20
+                            答案：C
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】Java的源代码文件可以分成3部分：包声明、导入声明和类定义。虽然它们不一定是必须的，但是如果这几部分同时存在则需要遵守一定的顺序。请选择你认为正确的选项？（  ）
-A．包声明、导入声明和类定义
-B．包声明、类定义和导入声明
-C．导入声明、包声明和类定义
-D．导入声明、类定义和包声明
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】Java的源代码文件可以分成3部分：包声明、导入声明和类定义。虽然它们不一定是必须的，但是如果这几部分同时存在则需要遵守一定的顺序。请选择你认为正确的选项？（  ）
+                            A．包声明、导入声明和类定义
+                            B．包声明、类定义和导入声明
+                            C．导入声明、包声明和类定义
+                            D．导入声明、类定义和包声明
+                            答案：A
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（  ）
-    package com.lzw;
-    private class First{
-    	private int age;
-    	public static void main(String[] args) {}
-    }
-A．编译错误：不能使用private修饰成员变量
-B．编译错误：成员变量未初始化
-C．编译错误：main()方法的签名不对
-D．编译错误：不能使用private修饰外部类
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（  ）
+                                package com.lzw;
+                                private class First{
+                                    private int age;
+                                    public static void main(String[] args) {}
+                                }
+                            A．编译错误：不能使用private修饰成员变量
+                            B．编译错误：成员变量未初始化
+                            C．编译错误：main()方法的签名不对
+                            D．编译错误：不能使用private修饰外部类
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行同一文件夹下的如下两个类时会发生什么？（  ）
-    //文件名：P1.java
-    package com.lzw;
-    public class P1 {
-        public void say() {
-            System.out.println("Hello World!");
-        }
-    }
-    //文件名：P2.java
-    public class P2 {
-        public void say() {
-            P1 p1 = new P1();
-            p1.say();
-        }
-    }
-A．两个文件都能正常编译，第二个文件也输出Hello World！
-B．两个文件都不能正常编译
-C．两个文件都能正常编译，但第二个文件在运行时发生错误
-D．第一个文件能正常编译，第二个文件不能正常编译
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行同一文件夹下的如下两个类时会发生什么？（  ）
+                                //文件名：P1.java
+                                package com.lzw;
+                                public class P1 {
+                                    public void say() {
+                                        System.out.println("Hello World!");
+                                    }
+                                }
+                                //文件名：P2.java
+                                public class P2 {
+                                    public void say() {
+                                        P1 p1 = new P1();
+                                        p1.say();
+                                    }
+                                }
+                            A．两个文件都能正常编译，第二个文件也输出Hello World！
+                            B．两个文件都不能正常编译
+                            C．两个文件都能正常编译，但第二个文件在运行时发生错误
+                            D．第一个文件能正常编译，第二个文件不能正常编译
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（  ）
-    public class Test {
-        public static void main(String[] args) {
-            String x = new String("12");
-            String y = new String("12");
-            if (x.equals(y))
-                System.out.println("Equal");
-            else
-                System.out.println("Not Equal");
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出Equal
-D．输出Not Equal
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（  ）
+                                public class Test {
+                                    public static void main(String[] args) {
+                                        String x = new String("12");
+                                        String y = new String("12");
+                                        if (x.equals(y))
+                                            System.out.println("Equal");
+                                        else
+                                            System.out.println("Not Equal");
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出Equal
+                            D．输出Not Equal
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】当编译和运行下列代码时会发生什么？（  ）
-    public class Test {
-        private String name = "MRSoft";
-        public static void main(String[] args) {
-            System.out.println(name);
-        }
-    }
-A．编译错误
-B．运行错误
-C．输出MRSoft
-D．输出null
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】当编译和运行下列代码时会发生什么？（  ）
+                                public class Test {
+                                    private String name = "MRSoft";
+                                    public static void main(String[] args) {
+                                        System.out.println(name);
+                                    }
+                                }
+                            A．编译错误
+                            B．运行错误
+                            C．输出MRSoft
+                            D．输出null
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】包名是类名的一部分，它们组合在一起就是这个类的完整名称，如果在一个类中同时需要使用两个同名的类名，那么应该如何引用它们。（  ）
-A．使用类的完整名称（包名+类名）
-B．直接使用类名（编译器会区分）
-C．使用import导入这两个类
-D．使用package把当前类定义到其它包中
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】包名是类名的一部分，它们组合在一起就是这个类的完整名称，如果在一个类中同时需要使用两个同名的类名，那么应该如何引用它们。（  ）
+                            A．使用类的完整名称（包名+类名）
+                            B．直接使用类名（编译器会区分）
+                            C．使用import导入这两个类
+                            D．使用package把当前类定义到其它包中
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】导入java.util包中的所有类，应该使用？（  ）
-A．package java.util
-B．package java.util.*
-C．import java.util
-D．import java.util.*
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】导入java.util包中的所有类，应该使用？（  ）
+                            A．package java.util
+                            B．package java.util.*
+                            C．import java.util
+                            D．import java.util.*
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】下列代码使用System类的out静态成员变量完成输出，应该为该类添加哪一个代码，才能使代码正确执行输出语句？（  ）
-            out.println("静态导入System类的out静态成员变量"); // 直接使用静态成员
-            out.println("可以在当前类直接使用导入的静态成员变量");
-A．import System
-B．import java.long.*
-C．import static java.lang.System.out
-D．import static System.out
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】下列代码使用System类的out静态成员变量完成输出，应该为该类添加哪一个代码，才能使代码正确执行输出语句？（  ）
+                                        out.println("静态导入System类的out静态成员变量"); // 直接使用静态成员
+                                        out.println("可以在当前类直接使用导入的静态成员变量");
+                            A．import System
+                            B．import java.long.*
+                            C．import static java.lang.System.out
+                            D．import static System.out
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】导入java.util包中的所有类，应该使用？（  ）
-A．package java.util
-B．package java.util.*
-C．import java.util
-D．import java.util.*
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】导入java.util包中的所有类，应该使用？（  ）
+                            A．package java.util
+                            B．package java.util.*
+                            C．import java.util
+                            D．import java.util.*
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【单选题】使用下面哪个关键字定义类的包？（  ）
-A．import
-B．package
-C．class
-D．static
-答案：未知
-难易程度：中
-答案解析：无
-知识点：
+                            【单选题】使用下面哪个关键字定义类的包？（  ）
+                            A．import
+                            B．package
+                            C．class
+                            D．static
+                            答案：未知
+                            难易程度：中
+                            答案解析：无
+                            知识点：
 
-【判断题】JavaSE、JavaEE和JavaME分别是独立的版本，它们没有任何依赖条件。（）
-答案：未知
+                            【判断题】JavaSE、JavaEE和JavaME分别是独立的版本，它们没有任何依赖条件。（）
+                            答案：错误
 
-【判断题】JavaEE和JavaME是分别独立的，它们之间没有依赖关系。（）
-答案：未知
+                            【判断题】JavaEE和JavaME是分别独立的，它们之间没有依赖关系。（）
+                            答案：错误
 
-【判断题】Java实现Web程序开发与桌面应用程序开发的技术都包含在JavaEE中。（）
-答案：未知
+                            【判断题】Java实现Web程序开发与桌面应用程序开发的技术都包含在JavaEE中。（）
+                            答案：错误
 
-【判断题】Java源码文件可以使用任何文本编辑器进行编写，然后通过JDK的编译命令完成Java程序的开发。（）
-答案：未知
+                            【判断题】Java源码文件可以使用任何文本编辑器进行编写，然后通过JDK的编译命令完成Java程序的开发。（）JDK：java javac
+                            答案：正确
 
-【判断题】Java语言执行源文件编译时使用的是javac.exe命令，输入命令时可省略后缀的文件扩展名（）
-答案：未知
+                            【判断题】Java语言执行源文件编译时使用的是javac.exe命令，输入命令时可省略后缀的文件扩展名（）
+                            答案：错误
 
-【判断题】在设置环境变量时，要注意避免破坏path环境变量的原有值，不能删除原有内容，应该在原有内容的基础上添加新内容，并以“；”符号分割多个值。（）
-答案：未知
+                            【判断题】在设置环境变量时，要注意避免破坏path环境变量的原有值，不能删除原有内容，应该在原有内容的基础上添加新内容，并以“；”符号分割多个值。（）
+                            答案：对
 
-【判断题】Eclipse的工作空间是首次启动时就固定的，必须在这个指定的空间中创建并完成Java项目的开发（）
-答案：未知
+                            【判断题】Eclipse的工作空间是首次启动时就固定的，必须在这个指定的空间中创建并完成Java项目的开发（）
+                            答案：错
 
-【判断题】WindowBuilder与Eclipse一样，是一个完全独立的开发工具，它主要用于窗体界面的设计工作。（）
-答案：未知
+                            【判断题】WindowBuilder与Eclipse一样，是一个完全独立的开发工具，它主要用于窗体界面的设计工作。（）
+                            答案：错
 
-【判断题】System.out.println()方法在Java编辑器中可以通过输入“syso”和按〈Alt+/〉快捷键完成快速录入。（）
-答案：未知
+                            【判断题】System.out.println()方法在Java编辑器中可以通过输入“syso”和按〈Alt+/〉快捷键完成快速录入。（）
+                            答案：对
 
-【判断题】将光标移动到Java编辑器的错误代码位置，按〈Ctrl+L〉快捷可以激活代码修正菜单，可以选择菜单中合适的修正方法。（）
-答案：未知
+                            【判断题】将光标移动到Java编辑器的错误代码位置，按〈Ctrl+L〉快捷可以激活代码修正菜单，可以选择菜单中合适的修正方法。（）
+                            答案：错
 
-【判断题】在调试视图中执行“单步跳过”命令的快捷键是〈F6〉键。（）
-答案：未知
+                            【判断题】在调试视图中执行“单步跳过”命令的快捷键是〈F6〉键。（）
+                            答案：对
 
-【判断题】使用Eclipse的调试功能进行程序调试时必须设置断点，才能够以调试方式运行程序。（）
-答案：未知
+                            【判断题】使用Eclipse的调试功能进行程序调试时必须设置断点，才能够以调试方式运行程序。（）
+                            答案：错
 

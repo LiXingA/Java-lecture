@@ -75,7 +75,7 @@ public class ExtractTiku {
             }
         }
         for (TiMu tiMu : set) {
-            examBufferedWriter.append(tiMu.tranlate().replace("excel 2003","excel 2016")).append("\n");
+            examBufferedWriter.append(tiMu.tranlate().replace("excel 2003", "excel 2016")).append("\n");
         }
         examBufferedWriter.close();
     }
@@ -108,13 +108,13 @@ public class ExtractTiku {
         }
 
         String tranlate() {
-            return this.tranlate(false);
+            return this.tranlate(false, false);
         }
 
-        String tranlate(boolean isNum) {
-            StringBuilder builder = new StringBuilder(isNum ? num + "．":"").append("【判断题】");
+        String tranlate(boolean isNum, boolean hide) {
+            StringBuilder builder = new StringBuilder(isNum ? num + "．" : "").append("【判断题】");
             builder.append(ti).append("\n");
-            builder.append("答案：").append(daan).append("\n");
+            builder.append("答案：").append(!hide ? daan : "你猜").append("\n");
             return builder.toString();
 
         }
@@ -143,17 +143,17 @@ public class ExtractTiku {
         }
 
         String tranlate() {
-            return this.tranlate(false);
+            return this.tranlate(false, false);
         }
 
-        String tranlate(boolean isNum) {
-            StringBuilder builder = new StringBuilder(isNum? num + "．":"").append("【单选题】");
+        String tranlate(boolean isNum, boolean hide) {
+            StringBuilder builder = new StringBuilder(isNum ? num + "．" : "").append("【单选题】");
             builder.append(ti).append("\n");
             builder.append(A).append("\n");
             builder.append(B).append("\n");
             builder.append(C).append("\n");
             builder.append(D).append("\n");
-            builder.append("答案：").append("暂无").append("\n");
+            builder.append("答案：").append(!hide ? daan : "你猜").append("\n");
             builder.append("难易程度：中").append("\n");
             builder.append("答案解析：无").append("\n");
             builder.append("知识点：").append("\n");
