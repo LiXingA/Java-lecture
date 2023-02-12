@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch KebiaoUtil",
+            "request": "launch",
+            "mainClass": "student.kebiao.KebiaoUtil",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
             "name": "Launch ExtractTiku",
             "request": "launch",
             "mainClass": "exam.ExtractTiku",
