@@ -6,10 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +22,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import student.excel.FileProcessor;
 import student.excel.WkCalc;
 
 public class KebiaoUtil {
@@ -63,20 +66,23 @@ public class KebiaoUtil {
         public int getColumnNum() {
             return columnNum;
         }
-
     }
 
     public static void main(String[] args) throws Exception {
+        Map<String, String> appendMap = new HashMap<>();
         File fromFile = new File(
                 "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\下埠课表212.xlsx");
+        // File toFile = new
+        // File("C:\\Users\\Xing\\Desktop\\2022-2023学年20、21、22级第二学期课表+周历暂定稿0212
+        // (下埠教学点)(1).xlsx");
         File toFile = new File(
                 "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\2022-2023学年20、21、22级第二学期课表+周历暂定稿0212 (下埠教学点).xlsx");
         Workbook fromWookbook = WkCalc.getWookbook(fromFile);
         Workbook toWookbook = WkCalc.getWookbook(toFile);
         Sheet fromSheet = fromWookbook.getSheetAt(0);
         createCell(fromSheet, "V13", "HTML5网页制作\n李星\n践行楼104");
-        createCell(fromSheet, "L16", "C语言程序设计\n钟子良\n践行楼102");
-        createCell(fromSheet, "Z16", "Protel Dxp1\n钟子良\n践行楼102");
+        createCell(fromSheet, "L16", "Protel Dxp1\n钟子良\n践行楼102");
+        createCell(fromSheet, "Z16", "C语言程序设计\n钟子良\n践行楼101");
         Sheet toSheet = toWookbook.getSheetAt(0);
         Sheet nameSheet = toWookbook.getSheet("班级对应名称");
         Map<String, String> nameMap = new HashMap<>();
@@ -111,7 +117,7 @@ public class KebiaoUtil {
                 minus++;
                 continue;
             }
-            System.err.println(className + "->" + boastName);
+            System.err.println(className + "-->" + boastName);
             Cell toFirstCell = toRow.getCell(0);
             toFirstCell.setCellValue(boastName);
             for (int i = 0; i < 4 * 5 + 2; i++) {
@@ -126,15 +132,16 @@ public class KebiaoUtil {
                 String nowLecture;
                 if (StringUtils.isNotBlank(lecture)) {
                     HashMap<String, LectureRecord> lectureM = lectures.get(toCellnum);
-                    nowLecture = lecture.replaceAll("（.*）|五年制|五年", "");
+                    nowLecture = lecture.replace("习近平新时代中国特色社会主义思想概论", "习近平思想概论").replaceAll("（.*）|五年制|五年", "");
                     if (nowLecture.startsWith("体育")) {
                         nowLecture += "教室未定" + wdCounts[toCellnum]++;
                     }
                     if (lectureM.containsKey(lecture)) {
                         int insertIndex = nowLecture.lastIndexOf("\n") + 1;
                         nowLecture = nowLecture.substring(0, insertIndex) + "合" + nowLecture.substring(insertIndex);
-                        createCell(toSheet, lectureM.get(lecture).getRowNum(), lectureM.get(lecture).getColumnNum(),
-                                nowLecture);
+                        LectureRecord lectureRecord = lectureM.get(lecture);
+                        appendMap.remove("r" + lectureRecord.getRowNum() + "c" + lectureRecord.getColumnNum());
+                        createCell(toSheet, lectureRecord.getRowNum(), lectureRecord.getColumnNum(), nowLecture);
                     }
                     lectureM.put(lecture, new LectureRecord(toRownum, toCellnum));
                     System.out.println(lecture.replace("\n", " ") + "->" + nowLecture.replace("\n", " "));
@@ -143,11 +150,23 @@ public class KebiaoUtil {
                 }
                 Cell toCell = toRow.getCell(toCellnum);
                 if (toCell == null) {
-                    toCell = toRow.createCell(toCellnum);
+                    toCell = toRow.createCell(toCellnum, CellType.STRING);
+                }
+                if (!toCell.getStringCellValue().equals(nowLecture)) {
+                    appendMap.put("r" + toRownum + "c" + toCellnum,
+                            new StringBuilder().append(toCell.getStringCellValue().replace("\n", " ")).append(" => ")
+                                    .append(nowLecture.replace("\n", " ")).toString());
                 }
                 toCell.setCellValue(nowLecture);
             }
         }
+        File outFile = new File("./Kebiao.txt");
+        StringBuilder builder = new StringBuilder();
+        builder.append(new Date().toString()).append("\n");
+        for (Entry<String, String> i : appendMap.entrySet()) {
+            builder.append(i.getKey()).append(" ").append(i.getValue()).append("\n");
+        }
+        FileProcessor.append(outFile.toPath(), builder.toString());
         toWookbook.write(new FileOutputStream(toFile));
     }
 }
