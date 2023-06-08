@@ -3,6 +3,8 @@ package student;
 import java.io.File;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import student.excel.WkCalc;
 
 public class ClazzConfig {
@@ -19,18 +21,20 @@ public class ClazzConfig {
 		super();
 		this.name = name;
 		this.lecture = lecture;
-		this.zuoyePath = new File(zuoyePath).getAbsolutePath();
+		this.zuoyePath = StringUtils.isBlank(zuoyePath) ? "" : new File(zuoyePath).getAbsolutePath();
 		this.wkPath = wkPath;
 		this.names = names;
 		System.out.println(errNameReg);
 		String oldReg = errNameReg;
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < oldReg.length(); i++) {
-			String cur = oldReg.substring(i, i + 1);
-			if (WkCalc.isHan(cur)) {
-				builder.append("\\u").append(WkCalc.charToHex(cur.charAt(0)));
-			} else {
-				builder.append(cur.charAt(0));
+		if (oldReg != null) {
+			for (int i = 0; i < oldReg.length(); i++) {
+				String cur = oldReg.substring(i, i + 1);
+				if (WkCalc.isHan(cur)) {
+					builder.append("\\u").append(WkCalc.charToHex(cur.charAt(0)));
+				} else {
+					builder.append(cur.charAt(0));
+				}
 			}
 		}
 		System.out.println(builder);
@@ -54,7 +58,7 @@ public class ClazzConfig {
 	}
 
 	public static String getClazzsPath() {
-		return ".\\clazzs.xlsx";
+		return ConfigData.getInstance().getClazzsPath();
 	}
 
 	public List<String> getNames() {

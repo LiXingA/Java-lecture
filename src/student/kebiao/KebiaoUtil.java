@@ -81,7 +81,7 @@ public class KebiaoUtil {
         Workbook toWookbook = WkCalc.getWookbook(toFile);
         Sheet fromSheet = fromWookbook.getSheetAt(0);
         createCell(fromSheet, "V13", "HTML5网页制作\n李星\n践行楼104");
-        createCell(fromSheet, "L16", "Protel Dxp1\n钟子良\n践行楼102");
+        // createCell(fromSheet, "L16", "Protel Dxp1\n钟子良\n践行楼102");
         createCell(fromSheet, "Z16", "C语言程序设计\n钟子良\n践行楼101");
         Sheet toSheet = toWookbook.getSheetAt(0);
         Sheet nameSheet = toWookbook.getSheet("班级对应名称");
@@ -154,7 +154,10 @@ public class KebiaoUtil {
                 }
                 if (!toCell.getStringCellValue().equals(nowLecture)) {
                     appendMap.put("r" + toRownum + "c" + toCellnum,
-                            new StringBuilder().append(toCell.getStringCellValue().replace("\n", " ")).append(" => ")
+                            new StringBuilder().append(boastName).append(" ").append("周")
+                                    .append(Arrays.asList("一", "二", "三", "四", "五").get((toCellnum - 1) / 4))
+                                    .append(Arrays.asList("1-2节", "3-4节", "5-6节", "7-8节").get((toCellnum - 1) % 4))
+                                    .append(toCell.getStringCellValue().replace("\n", " ")).append(" => ")
                                     .append(nowLecture.replace("\n", " ")).toString());
                 }
                 toCell.setCellValue(nowLecture);
