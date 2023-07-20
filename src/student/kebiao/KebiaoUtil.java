@@ -70,11 +70,10 @@ public class KebiaoUtil {
 
     public static void main(String[] args) throws Exception {
         Map<String, String> appendMap = new HashMap<>();
+        // 教务系统中导出来的课表
         File fromFile = new File(
                 "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\下埠课表212.xlsx");
-        // File toFile = new
-        // File("C:\\Users\\Xing\\Desktop\\2022-2023学年20、21、22级第二学期课表+周历暂定稿0212
-        // (下埠教学点)(1).xlsx");
+        // 要导出来修改的课表
         File toFile = new File(
                 "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\2022-2023学年20、21、22级第二学期课表+周历暂定稿0212 (下埠教学点).xlsx");
         Workbook fromWookbook = WkCalc.getWookbook(fromFile);
