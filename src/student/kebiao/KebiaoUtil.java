@@ -25,6 +25,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import student.excel.FileProcessor;
 import student.excel.WkCalc;
 
+/**
+ * 课表转换工具
+ */
 public class KebiaoUtil {
 
     static void createCell(Sheet sheet, String excelTag, String value) throws Exception {
@@ -72,16 +75,17 @@ public class KebiaoUtil {
         Map<String, String> appendMap = new HashMap<>();
         // 教务系统中导出来的课表
         File fromFile = new File(
-                "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\下埠课表212.xlsx");
+                "./全校班级课表.xlsx");
         // 要导出来修改的课表
-        File toFile = new File(
-                "D:\\graph\\tmp\\observable\\projects\\63e84608c15916ae26c5c043\\excel\\files\\2022-2023学年20、21、22级第二学期课表+周历暂定稿0212 (下埠教学点).xlsx");
+        File toFile = new File(// %projects/64e0cc56e429395ff60ad73d/excel/
+                "D:\\graph\\tmp\\observable\\projects\\64e0cc56e429395ff60ad73d\\excel\\files\\bak.xlsx");
+        boolean createNewRow = false;// 转换数据是否是创建新的行
         Workbook fromWookbook = WkCalc.getWookbook(fromFile);
         Workbook toWookbook = WkCalc.getWookbook(toFile);
         Sheet fromSheet = fromWookbook.getSheetAt(0);
-        createCell(fromSheet, "V13", "HTML5网页制作\n李星\n践行楼104");
-        // createCell(fromSheet, "L16", "Protel Dxp1\n钟子良\n践行楼102");
-        createCell(fromSheet, "Z16", "C语言程序设计\n钟子良\n践行楼101");
+        // 针对部分老师的排课要求，如出现单双班课程、 特殊要修改的单元格
+        createCell(fromSheet, "F9", "建筑工程测量\n甘新辉\n践行楼103");
+        createCell(fromSheet, "F11", "建筑工程测量\n甘新辉\n践行楼103");
         Sheet toSheet = toWookbook.getSheetAt(0);
         Sheet nameSheet = toWookbook.getSheet("班级对应名称");
         Map<String, String> nameMap = new HashMap<>();
@@ -94,7 +98,7 @@ public class KebiaoUtil {
             }
             nameMap.put(sysCell.getStringCellValue(), boastCell != null ? boastCell.getStringCellValue() : "");
         }
-        List<Integer> ss = Arrays.asList(7, 9);
+        List<Integer> ss = Arrays.asList(7, 8, 9, 10);
         Row fromTitleRow = fromSheet.getRow(fromSheet.getFirstRowNum() + 2);
         int minus = 1;
         List<HashMap<String, LectureRecord>> lectures = new ArrayList<>();
@@ -105,34 +109,50 @@ public class KebiaoUtil {
         Arrays.fill(wdCounts, 1);
         for (int rownum = fromSheet.getFirstRowNum() + 3; rownum <= fromSheet.getLastRowNum(); rownum++) {
             Row fromRow = fromSheet.getRow(rownum);
-            int toRownum = rownum - minus;
-            Row toRow = toSheet.getRow(toRownum);
             String className = fromRow.getCell(0) != null ? fromRow.getCell(0).getStringCellValue() : "";
             if (StringUtils.isBlank(className)) {
+                System.err.println("系统表里有错误！");
                 break;
             }
             String boastName = nameMap.get(className);
-            if (StringUtils.isBlank(boastName)) {
+            if (StringUtils.isBlank(boastName)) {// ！！！系统内的班级名称没有对应校区班级名称，则直接忽略掉这一行读取下一行
                 minus++;
                 continue;
             }
+            int toRownum = -1;
+            if (createNewRow) {
+                toRownum = rownum - minus;
+            } else {
+                for (int i = toSheet.getFirstRowNum(); i <= toSheet.getLastRowNum(); i++) {
+                    if (toSheet.getRow(i).getCell(0) != null
+                            && toSheet.getRow(i).getCell(0).getStringCellValue().equals(boastName)) {
+                        toRownum = i;
+                    }
+                }
+            }
+            if (toRownum == -1) {
+                System.err.println("表里有错误！找不到班级" + boastName);
+                break;
+            }
+            Row toRow = toSheet.getRow(toRownum);
             System.err.println(className + "-->" + boastName);
             Cell toFirstCell = toRow.getCell(0);
             toFirstCell.setCellValue(boastName);
             for (int i = 0; i < 4 * 5 + 2; i++) {
                 int cellnum = i * 2 + 1;
                 Cell numCell = fromTitleRow.getCell(cellnum);
-                int toCellnum = i + 1 - (i / 5);
+                int toCellnum = ((i + 1) % 5 == 0 ? i - 1 : i) + 1 - (i / 5);// !!!!!!!!!!系统表里是每天5节，因为下埠课表每天只显示4节，所以系统每天的最后1节特殊处理掉，放在每天倒数第二节
                 String lecture = fromRow.getCell(cellnum) != null ? fromRow.getCell(cellnum).getStringCellValue() : "";
                 if (StringUtils.isBlank(lecture) && numCell != null
-                        && ss.indexOf((int) numCell.getNumericCellValue()) != -1) {
+                        && ss.indexOf((int) numCell.getNumericCellValue()) != -1) {// 晚自习7-8/9-10节课如果为空，则直接忽略不复制到目标单元格
                     continue;
                 }
                 String nowLecture;
                 if (StringUtils.isNotBlank(lecture)) {
                     HashMap<String, LectureRecord> lectureM = lectures.get(toCellnum);
+                    // 需要替换的文字
                     nowLecture = lecture.replace("习近平新时代中国特色社会主义思想概论", "习近平思想概论").replaceAll("（.*）|五年制|五年", "");
-                    if (nowLecture.startsWith("体育")) {
+                    if (nowLecture.startsWith("体育") || nowLecture.startsWith("大学体育")) {
                         nowLecture += "教室未定" + wdCounts[toCellnum]++;
                     }
                     if (lectureM.containsKey(lecture)) {
@@ -156,6 +176,7 @@ public class KebiaoUtil {
                             new StringBuilder().append(boastName).append(" ").append("周")
                                     .append(Arrays.asList("一", "二", "三", "四", "五").get((toCellnum - 1) / 4))
                                     .append(Arrays.asList("1-2节", "3-4节", "5-6节", "7-8节").get((toCellnum - 1) % 4))
+                                    .append(" ")
                                     .append(toCell.getStringCellValue().replace("\n", " ")).append(" => ")
                                     .append(nowLecture.replace("\n", " ")).toString());
                 }

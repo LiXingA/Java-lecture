@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CheckFileUtil",
+            "request": "launch",
+            "mainClass": "student.CheckFileUtil",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
             "name": "Launch KebiaoUtil",
             "request": "launch",
             "mainClass": "student.kebiao.KebiaoUtil",
