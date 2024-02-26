@@ -18,15 +18,16 @@ import student.HandleFileI;
 
 public class ImageTransfer {
 
-	private static final int IMG_WIDTH = 71 * 3 / 2;
-	private static final int IMG_HEIGHT = 99 * 3 / 2;
+	private static final int IMG_WIDTH = 120;//71 * 3 / 2;
+	private static final int IMG_HEIGHT = 160;//99 * 3 / 2;
 
 	public static void main(String[] args) throws IOException {
-		exportXXX();
+		// exportXXX();
+		exportSize();
 	}
 
 	static void exportXXX() throws IOException {
-		File dirs = new File("D:\\Student\\20计应2\\收集");
+		File dirs = new File("D:\\aaaa\\weixin\\WeChat Files\\wxid_0lg821m9xx1w22\\FileStorage\\File\\2023-11\\23计应照片2");
 		List<String> names = getNames(null);
 		dirs.mkdirs();
 		while (!names.isEmpty()) {
@@ -63,7 +64,7 @@ public class ImageTransfer {
 				}
 
 			};
-			HandleFileI.Tools.scanDirRecursion(new File("D:\\Student\\20计应2\\收集1"), handler);
+			HandleFileI.Tools.scanDirRecursion(new File("D:\\aaaa\\weixin\\WeChat Files\\wxid_0lg821m9xx1w22\\FileStorage\\File\\2023-11\\23计应照片"), handler);
 		}
 	}
 
@@ -97,7 +98,7 @@ public class ImageTransfer {
 	}
 
 	static void exportSize() {
-		File dirs = new File("D:\\Student\\20计应2\\20计应2\\照片2");
+		File dirs = new File("D:\\aaaa\\weixin\\WeChat Files\\wxid_0lg821m9xx1w22\\FileStorage\\File\\2023-11\\23计应照片2");
 		dirs.mkdirs();
 		HandleFileI handler = new HandleFileI() {
 
@@ -128,7 +129,7 @@ public class ImageTransfer {
 			}
 
 		};
-		HandleFileI.Tools.scanDirRecursion(new File("D:\\Student\\20计应2\\20计应2\\照片"), handler);
+		HandleFileI.Tools.scanDirRecursion(new File("D:\\aaaa\\weixin\\WeChat Files\\wxid_0lg821m9xx1w22\\FileStorage\\File\\2023-11\\23计应照片"), handler);
 	}
 
 	static void extractName() {

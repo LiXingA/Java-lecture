@@ -121,7 +121,7 @@ public class CheckZuoyeUtil {
 					File r = removeFile(directory, fileMap.get(root), record);
 					if (r == null) {
 						Record record2 = removeRecordMap.get(getRootFile(directory, removeRecordMap.keySet()));
-						if (!record2.getName().equals(name)) {
+						if (record2 != null && !record2.getName().equals(name)) {
 							builder.append("    ----- 学生" + name + ", 复制了目录:交了目录" + directory.getAbsolutePath() + "和 "
 									+ record2.getPath() + ",重复提交");
 							if (directory.lastModified() < new File(record2.getPath()).lastModified()) {

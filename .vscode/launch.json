@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ImageTransfer",
+            "request": "launch",
+            "mainClass": "student.util.ImageTransfer",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
             "name": "CheckFileUtil",
             "request": "launch",
             "mainClass": "student.CheckFileUtil",
