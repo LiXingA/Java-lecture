@@ -84,9 +84,11 @@ public class CheckZuoyeUtil {
 		}
 
 		public void handleFile(File file) throws Exception {
+			int index = 0;
 			for (String name : names) {
+				index++;
 				if (file.getName().indexOf(name) != -1) {
-					Record record = new Record(Types.file, file.getAbsolutePath(), name, file.lastModified());
+					Record record = new Record(index, Types.file, file.getAbsolutePath(), name, file.lastModified());
 					File root = getRootFile(file, fileMap.keySet());
 					if (root == null) {
 						throw new Exception("找不到根目录");
@@ -110,9 +112,11 @@ public class CheckZuoyeUtil {
 		}
 
 		public void handleDir(File directory) throws Exception {
+			int index = 0;
 			for (String name : names) {
+				index++;
 				if (directory.getName().indexOf(name) != -1) {
-					Record record = new Record(Types.directory, directory.getAbsolutePath(), name,
+					Record record = new Record(index, Types.directory, directory.getAbsolutePath(), name,
 							directory.lastModified());
 					File root = getRootFile(directory, fileMap.keySet());
 					if (root == null) {
@@ -159,8 +163,10 @@ public class CheckZuoyeUtil {
 		int maxCheckTimes = 0;
 		int maxChatTimes = 0;
 		int maxZyTimes = 0;
+		int index = 0;
 		for (Entry<String, List<Record>> entry : studentRecordByName.entrySet()) {
 			String name = entry.getKey();
+			index++;
 			List<Record> recordList = entry.getValue();
 			WkRecord wkRecord = wkMapByName.get(name);
 			List<ChatInfo> chats = wkRecord != null ? wkRecord.getChats() : new ArrayList<ChatInfo>();
@@ -180,8 +186,8 @@ public class CheckZuoyeUtil {
 				}
 
 			}
-			Record firstRecord = recordList.size() == 0 ? new Record(Types.nosubmit, "没交", name, 0l)
-					: new Record(Types.details, "详情", name, 0l);
+			Record firstRecord = recordList.size() == 0 ? new Record(index, Types.nosubmit, "没交", name, 0l)
+					: new Record(index, Types.details, "详情", name, 0l);
 			recordList.add(0, firstRecord);
 			firstRecord.setFirst(true);
 			firstRecord.setTimes(set.size());

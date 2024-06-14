@@ -6,4 +6,6 @@ public interface ConfigAbs {
 	ClazzConfig getClazzConfig();
 
 	void setClazzConfig(ClazzConfig config) throws Exception;
+
+	void setClazzConfigs(ClazzConfig[] clazzConfigs);
 }

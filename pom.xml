@@ -9,10 +9,20 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jettyVersion>7.6.15.v20140411</jettyVersion>
+		<JETTY_VERSION>9.4.54.v20240208</JETTY_VERSION>
 		<poiVersion>3.17</poiVersion>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20131018</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-http</artifactId>
+			<version>${JETTY_VERSION}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>

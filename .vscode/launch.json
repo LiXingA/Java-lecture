@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HttpUtil",
+            "request": "launch",
+            "mainClass": "student.util.HttpUtil",
+            "projectName": "hello-world"
+        },
+        {
+            "type": "java",
             "name": "ImageTransfer",
             "request": "launch",
             "mainClass": "student.util.ImageTransfer",

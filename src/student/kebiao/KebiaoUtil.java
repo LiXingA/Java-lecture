@@ -15,6 +15,8 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -95,6 +97,12 @@ public class KebiaoUtil {
     public final static int columEachCell = 5;
 
     public static void main(String[] args) throws Exception {
+        int option = JOptionPane.showConfirmDialog(null, "将修改目标课表，你确定转换EXCEL课表？", "警告",
+                JOptionPane.YES_NO_CANCEL_OPTION);
+        if (option == JOptionPane.NO_OPTION || option == JOptionPane.CANCEL_OPTION) {
+            System.out.println("未操作！");
+            return;
+        }
         Map<String, String> wzx = new HashMap<>();
         Map<String, String> appendMap = new HashMap<>();
         // 教务系统中导出来的课表
@@ -151,6 +159,7 @@ public class KebiaoUtil {
             }
             String boastName = nameMap.get(className);
             if (StringUtils.isBlank(boastName)) {// ！！！系统内的班级名称没有对应校区班级名称，则直接忽略掉这一行读取下一行
+                System.out.println("找不到系统对应表中班级：" + className + boastName);
                 minus++;
                 continue;
             }
@@ -202,8 +211,8 @@ public class KebiaoUtil {
                     if (nowLecture.startsWith("体育") || nowLecture.startsWith("大学体育")) {
                         nowLecture += "教室未定" + wdCounts[toCellnum]++;
                     }
-                    if (lecture.contains("李玉洁")) {
-                        System.err.println();
+                    if (lecture.contains("胡智勇")) {
+                        System.out.println();
                     }
                     if (lectureM.containsKey(lecture)) {
                         int insertIndex = nowLecture.lastIndexOf("\n") + 1;

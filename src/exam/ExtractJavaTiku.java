@@ -25,7 +25,7 @@ public class ExtractJavaTiku {
             @Override
             public void handleFile(File file) throws Exception {
                 if (file.getName().endsWith(".html")) {
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file, Charset.forName("gb2312")));
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
                         if (line.contains("选择题")) {

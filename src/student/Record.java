@@ -11,6 +11,7 @@ import student.excel.ChatInfo;
 public class Record {
 	private final Types types;
 	private final String path;
+	private final int numIndex;
 	private final String name;
 	private int times = 0;
 
@@ -22,12 +23,17 @@ public class Record {
 	private List<Date> wangChecks = Collections.EMPTY_LIST;
 	private List<ChatInfo> wangChats = Collections.EMPTY_LIST;
 
-	public Record(Types types, String path, String name, long l) {
+	public Record(int numIndex, Types types, String path, String name, long l) {
 		super();
+		this.numIndex = numIndex;
 		this.types = types;
 		this.path = path;
 		this.name = name;
 		this.createTime = l;
+	}
+
+	public int getNumIndex() {
+		return numIndex;
 	}
 
 	public Types getTypes() {
@@ -61,9 +67,10 @@ public class Record {
 	protected static final Object FIRST = "首选";
 	static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	static final String TYPE = "文件类型";
+	static final String NUM_INDEX = "序号";
 	static final String NAME = "学生名字";
 
-	public static final Object[] columnIdentifiers = new Object[] { NAME,
+	public static final Object[] columnIdentifiers = new Object[] { NUM_INDEX, NAME,
 
 			"作业路径", TYPE, "总次数",
 
@@ -78,7 +85,9 @@ public class Record {
 			"创建时间" };
 
 	public Object[] toDatas() {
-		return new Object[] { this.name,
+		return new Object[] {
+
+				this.numIndex, this.name,
 
 				this.path, this.types, this.times,
 

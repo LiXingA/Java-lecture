@@ -59,35 +59,35 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 	private static final long serialVersionUID = 1L;
 	private final DefaultTableModel dm;
 	private ClazzConfig clazzConfig;
-	private final ClazzConfig[] configs;
+	private ClazzConfig[] configs = new ClazzConfig[] {};
 	private final JTable table;
 	private Details genDatas;
-	private JLabel jLb;
+	private final JLabel jLb = new JLabel();
+	private final JComboBox<ClazzConfig> petList = new JComboBox<>(configs);
 	public static final Font font = new Font("楷体", Font.BOLD, 12);
 	public static final Color BgColor = Color.GREEN;
 	public static final Color FontColor = Color.BLACK;
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		ClazzConfig[] clazzConfigs = CheckZuoyeUtil.getClazzConfigs();
-		new ExcelTableFrame(clazzConfigs[0], clazzConfigs);
-	}
-
-	public ExcelTableFrame(ClazzConfig clazzConfig, ClazzConfig[] clazzConfigs) throws IOException {
-		super(clazzConfig.getName() + "  " + clazzConfig.getLecture());
-		this.configs = clazzConfigs;
-		this.clazzConfig = clazzConfig;
+	{
 		this.dm = new DefaultTableModel();
 		this.table = new JTable(dm);
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
 		table.setRowSorter(sorter);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.setRowHeight(30);
-		this.jLb = new JLabel();
-		this.refresh(null);
-		this.setLocationByPlatform(true);
-		ConfigData.EXPORT_FILE_PATH = String.format("./%s%s.csv", ExcelTableFrame.this.clazzConfig.getName(),
-				ExcelTableFrame.this.clazzConfig.getLecture());
-		this.jLb.setText("保存：" + ConfigData.EXPORT_FILE_PATH);
+	}
+
+	public static void main(String[] args) throws Exception {
+		ClazzConfig[] clazzConfigs = CheckZuoyeUtil.getClazzConfigs();
+		new ExcelTableFrame(clazzConfigs[0], clazzConfigs);
+	}
+
+	public ExcelTableFrame(ClazzConfig clazzConfig, ClazzConfig[] clazzConfigs) throws Exception {
+		super(clazzConfig.toString());
+		this.setClazzConfigs(clazzConfigs);
+		this.setClazzConfig(this.configs[0]);
+		petList.setSelectedItem(this.clazzConfig);
+		this.setTitle(this.clazzConfig.toString());
 
 		BorderLayout gridLayout = new BorderLayout(20, 5);
 		getContentPane().setLayout(gridLayout);
@@ -95,11 +95,18 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 		JScrollPane scroll = new JScrollPane(table);
 		getContentPane().add(scroll, BorderLayout.CENTER);
 		getContentPane().add(getBottom(), BorderLayout.SOUTH);
+		this.setLocationByPlatform(true);
 		setSize(1024, 560);
 		UItools.centerDisplay(this);
 		setVisible(true);
 		setAlwaysOnTop(ConfigData.DEFAULT_DING);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	void reloadConfigs(ClazzConfig[] clazzConfigs) throws Exception {
+		this.setClazzConfigs(clazzConfigs);
+		petList.setSelectedItem(this.clazzConfig);
+		this.setTitle(this.clazzConfig.toString());
 	}
 
 	public static JSlider createSlider(int min, int max, int value) {
@@ -263,15 +270,17 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 		JPanel jpBottom = new JPanel();
 		JLabel jL = new JLabel(
 				String.format("当前班级：%s，课程：%s", this.clazzConfig.getName(), this.clazzConfig.getLecture()));
-		JComboBox<ClazzConfig> petList = new JComboBox<>(configs);
-		petList.setSelectedIndex(Arrays.asList(configs).indexOf(this.clazzConfig));
 		petList.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox<ClazzConfig> cb = (JComboBox<ClazzConfig>) e.getSource();
 				ClazzConfig config = (ClazzConfig) cb.getSelectedItem();
+				if (config == null || ExcelTableFrame.this.clazzConfig == config) {
+					return;
+				}
 				try {
 					ExcelTableFrame.this.setClazzConfig(config);
+					ExcelTableFrame.this.setTitle(config.toString());
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -289,9 +298,26 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 		});
 		JButton nameBtn = new JButton("班级配置信息");
 		nameBtn.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CheckZuoyeUtil.openFile(ClazzConfig.getClazzsPath());
+				Object[] possibleValues = { "打开配置文件", "重新加载配置文件" };
+				int option = JOptionPane.showOptionDialog(ExcelTableFrame.this, "选择操作", "班级配置信息",
+						JOptionPane.DEFAULT_OPTION,
+						JOptionPane.WARNING_MESSAGE, null, possibleValues, possibleValues[0]);
+				if (option == JOptionPane.CLOSED_OPTION) {
+					return;
+				} else if (option == 0) {
+					CheckZuoyeUtil.openFile(ClazzConfig.getClazzsPath());
+				} else if (option == 1) {
+					try {
+						ClazzConfig[] clazzConfigs = CheckZuoyeUtil.getClazzConfigs();
+						ExcelTableFrame.this.reloadConfigs(clazzConfigs);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+
 			}
 		});
 		JButton wkBtn = new JButton("打开网课记录");
@@ -350,12 +376,25 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 	}
 
 	@Override
+	public void setClazzConfigs(ClazzConfig[] clazzConfigs) {
+		this.configs = clazzConfigs;
+		this.petList.setSelectedItem(null);
+		this.petList.removeAllItems();
+		for (ClazzConfig config : this.configs) {
+			this.petList.addItem(config);
+		}
+	}
+
+	@Override
 	public ClazzConfig getClazzConfig() {
 		return this.clazzConfig;
 	}
 
 	@Override
 	public void setClazzConfig(ClazzConfig config) throws Exception {
+		if (config == null || ExcelTableFrame.this.clazzConfig == config) {
+			return;
+		}
 		this.clazzConfig = config;
 		this.refresh(null);
 		ConfigData.EXPORT_FILE_PATH = String.format("./%s%s.csv", ExcelTableFrame.this.clazzConfig.getName(),
@@ -370,19 +409,21 @@ public class ExcelTableFrame extends JFrame implements ConfigAbs {
 			this.genDatas.setFirstData(data);
 		}
 		dm.setDataVector(this.genDatas.getFirstData(), Record.columnIdentifiers);
-		table.getColumnModel().getColumn(0).setPreferredWidth(100);
-		table.getColumnModel().getColumn(1).setPreferredWidth(600);
-		table.getColumnModel().getColumn(2).setPreferredWidth(80);
-		table.getColumnModel().getColumn(3).setPreferredWidth(40);
-		table.getColumnModel().getColumn(4).setPreferredWidth(40);
-		table.getColumnModel().getColumn(5).setPreferredWidth(50);
+		int index = 0;
+		table.getColumnModel().getColumn(index++).setPreferredWidth(40);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(100);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(600);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(80);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(40);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(40);
+		table.getColumnModel().getColumn(index++).setPreferredWidth(50);
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
 					boolean hasFocus, int row, int column) {
 				JComponent cellRenderer = (JComponent) super.getTableCellRendererComponent(table, value, isSelected,
 						hasFocus, row, column);
-				Enum<Types> type = (Enum<Types>) table.getValueAt(row, 2);
+				Enum<Types> type = (Enum<Types>) table.getValueAt(row, 3);
 				if (Types.nosubmit == type) {
 					cellRenderer.setBackground(BgColor);
 					cellRenderer.setForeground(FontColor);
